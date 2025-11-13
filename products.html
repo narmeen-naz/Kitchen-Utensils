@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Browse our premium collection of kitchen utensils and appliances">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <title>Products | Kitchen Utensils</title>
+    
+    <style>
+        :root {
+            --primary: #ff6b35;
+            --secondary: #2c3e50;
+            --accent: #f39c12;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 0.8rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .navbar-brand img {
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-brand:hover img {
+            transform: rotate(15deg);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+            margin: 0 5px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-outline-warning {
+            border-color: var(--accent);
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-warning:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/products-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 2rem 0 4rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 15%;
+        }
+        
+        /* Product Cards */
+        .product-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-img-container {
+            height: 220px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+        }
+        
+        .card-img-top {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 220px);
+        }
+        
+        .card-title {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        
+        .card-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
+        }
+        
+        /* Filters Section */
+        .filters-section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .filter-title {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-group label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Footer Styling */
+        footer {
+            background: linear-gradient(to right, var(--secondary), #1a2530) !important;
+            padding-top: 3rem !important;
+        }
+        
+        footer h4, footer h5 {
+            color: var(--accent);
+        }
+        
+        footer a {
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+        
+        footer a:hover {
+            color: var(--accent) !important;
+            transform: translateX(5px);
+        }
+        
+        footer .bi {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        footer .bi:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .section-title::after {
+                width: 60%;
+                left: 20%;
+            }
+            
+            .card-img-container {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Navbar Section -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="./index.html">
+            <img src="images/logo...jpg" alt="Logo" width="50" height="50" class="product-img">
+            <span class="text-warning">Kitchen Utensils</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link text-warning" href="./index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-warning active" href="./products.html">Products</a></li>
+                <li class="nav-item"><a class="nav-link text-warning" href="./about.html">About</a></li>
+                
+                <!-- Gallery Link outside Dropdown -->
+                <li class="nav-item"><a class="nav-link text-warning" href="./gallery.html">Gallery</a></li>
+                <!-- Contact Link outside Dropdown -->
+                <li class="nav-item"><a class="nav-link text-warning" href="./contact.html">Contact</a></li>
+
+                <!-- Search Bar -->
+                <li class="nav-item ms-2">
+                    <form class="d-flex" action="/search" method="GET">
+                        <input class="form-control me-2" type="search" placeholder="Search Products" aria-label="Search" name="query">
+                        <button class="btn btn-outline-warning" type="submit">Search</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+        <h1>Our Premium Products</h1>
+        <p>Discover our carefully curated collection of high-quality kitchen utensils and appliances designed to elevate your cooking experience</p>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-section">
+    <div class="container mt-3">
+        <h2 class="section-title">Popular Products</h2>
+        
+        <!-- Filters -->
+        <div class="filters-section">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="filter-group">
+                        <label class="filter-title">Categories</label>
+                        <select class="form-select">
+                            <option selected>All Categories</option>
+                            <option>Cookware</option>
+                            <option>Cutlery</option>
+                            <option>Storage</option>
+                            <option>Appliances</option>
+                            <option>Accessories</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="filter-group">
+                        <label class="filter-title">Price Range</label>
+                        <select class="form-select">
+                            <option selected>All Prices</option>
+                            <option>Under $20</option>
+                            <option>$20 - $50</option>
+                            <option>$50 - $100</option>
+                            <option>Over $100</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="filter-group">
+                        <label class="filter-title">Sort By</label>
+                        <select class="form-select">
+                            <option selected>Featured</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Customer Reviews</option>
+                            <option>Newest Arrivals</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button class="btn btn-warning w-100">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Products Grid -->
+        <div class="row ">
+            <!-- Product 1 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/frypan.webp" class="card-img-top" alt="Non-Stick Fry Pan">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Non-Stick Fry Pan</h5>
+                        <p class="card-text">Premium non-stick frying pan with even heat distribution. Perfect for searing, sautéing, and frying with minimal oil.</p>
+                        <div class="price">$24.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/cabinets.0.jpg" class="card-img-top" alt="Kitchen Storage Cabinet">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Kitchen Storage Cabinet</h5>
+                        <p class="card-text">Space-saving kitchen cabinet with multiple compartments. Keep your kitchen organized and clutter-free.</p>
+                        <div class="price">$89.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/grill pans.0.jpg" class="card-img-top" alt="Cast Iron Grill Pan">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Cast Iron Grill Pan</h5>
+                        <p class="card-text">Professional-grade cast iron grill pan that creates perfect grill marks. Retains heat evenly for superior cooking.</p>
+                        <div class="price">$34.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="col-lg-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/cutlery set.0.jpg" class="card-img-top" alt="Stainless Steel Cutlery Set">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Stainless Steel Cutlery Set</h5>
+                        <p class="card-text">18/10 stainless steel cutlery set with ergonomic handles. Complete 16-piece set for everyday dining.</p>
+                        <div class="price">$49.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/plates stand.jpg" class="card-img-top" alt="Bamboo Plate Stand">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Bamboo Plate Stand</h5>
+                        <p class="card-text">Eco-friendly bamboo plate stand with 5 tiers. Perfect for organizing plates and saving counter space.</p>
+                        <div class="price">$19.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/egg poachers.0.jpg" class="card-img-top" alt="Silicone Egg Poachers">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Silicone Egg Poachers</h5>
+                        <p class="card-text">Set of 4 non-stick silicone egg poachers. Create perfectly shaped poached eggs every time with ease.</p>
+                        <div class="price">$14.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/steamers.webp" class="card-img-top" alt="Stainless Steel Steamers">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Stainless Steel Steamers</h5>
+                        <p class="card-text">3-tier stainless steel steamer for healthy cooking. Stackable design allows multiple foods at once.</p>
+                        <div class="price">$29.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/flask.webp" class="card-img-top" alt="Stainless Steel Flask">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Stainless Steel Flask</h5>
+                        <p class="card-text">Vacuum-insulated stainless steel flask. Keeps beverages hot or cold for hours. Leak-proof design.</p>
+                        <div class="price">$22.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 9 -->
+            <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/spice jars.0.jpg" class="card-img-top" alt="Glass Spice Jars Set">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Glass Spice Jars Set</h5>
+                        <p class="card-text">Set of 12 glass spice jars with wooden lids. Magnetic labels included for easy organization.</p>
+                        <div class="price">$34.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 10 -->
+            <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/ice cream and corboc makers.webp" class="card-img-top" alt="Automatic Ice Cream Maker">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Automatic Ice Cream Maker</h5>
+                        <p class="card-text">2-quart automatic ice cream maker. Create homemade ice cream, sorbet, and frozen yogurt in minutes.</p>
+                        <div class="price">$79.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 11 -->
+            <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/handis.0.jpg" class="card-img-top" alt="Traditional Cooking Handis">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Traditional Cooking Handis</h5>
+                        <p class="card-text">Set of 3 traditional clay handis for authentic cooking. Enhances flavor and retains nutrients.</p>
+                        <div class="price">$39.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 12 -->
+            <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
+                <div class="card product-card">
+                    <div class="card-img-container">
+                        <img src="images/lunch box.webp" class="card-img-top" alt="Insulated Lunch Box">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Insulated Lunch Box</h5>
+                        <p class="card-text">3-compartment insulated lunch box with containers. Keeps food fresh and at perfect temperature.</p>
+                        <div class="price">$27.99</div>
+                        <a href="#" class="btn btn-primary">see details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="bg-warning py-5 text-center">
+    <div class="container">
+        <h2 class="mb-3">Can't Find What You're Looking For?</h2>
+        <p class="lead mb-4">Contact us for custom orders or special requests</p>
+        <a href="./contact.html" class="btn btn-dark btn-lg">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <!-- Section 1: Logo & Description -->
+        <div class="col-md-4 mb-3">
+          <h4 class="mb-2 d-flex align-items-center justify-content-center justify-content-md-start">
+            <img src="images/logo...jpg" alt="Kitchen Utensils" style="width: 40px; height: 40px; border-radius: 50%;" class="me-2">
+            Kitchen Utensils
+          </h4>
+          <p class="small mb-0">
+            Your trusted source for the best kitchen gadgets and home appliances that make cooking easier and smarter.
+          </p>
+        </div>
+
+        <!-- Section 2: Navigation Links -->
+        <div class="col-md-4 mb-3">
+          <h5 class="mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="./index.html" class="text-white text-decoration-none">Home</a></li>
+            <li class="mb-2"><a href="./products.html" class="text-white text-decoration-none">Products</a></li>
+            <li class="mb-2"><a href="./about.html" class="text-white text-decoration-none">About Us</a></li>
+            <li class="mb-2"><a href="./contact.html" class="text-white text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Section 3: Social Media -->
+        <div class="col-md-4 mb-3">
+          <h5 class="mb-3">Follow Us</h5>
+          <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+          
+          <div class="mt-3">
+            <h6>Subscribe to Our Newsletter</h6>
+            <div class="input-group input-group-sm mt-2">
+              <input type="email" class="form-control" placeholder="Your email">
+              <button class="btn btn-warning" type="button">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-secondary">
+      <div class="text-center small">
+        &copy; 2025 Kitchen Utensils. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JavaScript for animations -->
+  <script>
+    // Fade-in animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = function() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        // Check on load
+        fadeInOnScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(33, 37, 41, 0.95)';
+                navbar.style.padding = '0.5rem 0';
+            } else {
+                navbar.style.backgroundColor = '';
+                navbar.style.padding = '0.8rem 0';
+            }
+        });
+    });
+  </script>
+</body>
+</html>
