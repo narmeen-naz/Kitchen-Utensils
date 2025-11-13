@@ -169,6 +169,7 @@
             transition: all 0.3s ease;
             margin-bottom: 2rem;
             height: 100%;
+            cursor: pointer;
         }
         
         .product-card:hover {
@@ -274,6 +275,280 @@
             transform: translateY(0);
         }
         
+        /* Product Detail Modal */
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1050;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .product-detail {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.5s ease;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .detail-header {
+            background: linear-gradient(to right, var(--secondary), #1a2530);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px 15px 0 0;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+        
+        .detail-body {
+            padding: 2rem;
+        }
+        
+        /* Product Image Gallery */
+        .product-image-gallery {
+            position: relative;
+        }
+        
+        .main-product-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .main-product-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .image-thumbnails {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .thumbnail.active {
+            border-color: var(--primary);
+        }
+        
+        .thumbnail:hover {
+            border-color: var(--accent);
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Product Info Section */
+        .product-info {
+            padding-left: 2rem;
+        }
+        
+        .product-info h2 {
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Product Specifications */
+        .product-specs {
+            margin-bottom: 2rem;
+        }
+        
+        .specs-title {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .specs-table tr {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .specs-table tr:last-child {
+            border-bottom: none;
+        }
+        
+        .specs-table td {
+            padding: 12px 0;
+        }
+        
+        .spec-name {
+            font-weight: 600;
+            color: var(--secondary);
+            width: 40%;
+        }
+        
+        .spec-value {
+            color: #666;
+        }
+        
+        /* Quantity and Actions */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .quantity-btn {
+            background-color: var(--light);
+            border: 1px solid #ddd;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin: 0 10px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-add-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        
+        .btn-add-cart:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);
+        }
+        
+        .btn-wishlist {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-wishlist:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Additional Info Tabs */
+        .product-tabs {
+            margin-top: 2rem;
+        }
+        
+        .nav-tabs {
+            border-bottom: 2px solid #eee;
+        }
+        
+        .nav-tabs .nav-link {
+            color: #666;
+            font-weight: 500;
+            border: none;
+            padding: 12px 20px;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--primary);
+            background: none;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .tab-content {
+            padding: 1.5rem 0;
+        }
+        
+        .tab-pane {
+            color: #666;
+            line-height: 1.7;
+        }
+        
         /* Footer Styling */
         footer {
             background: linear-gradient(to right, var(--secondary), #1a2530) !important;
@@ -320,6 +595,19 @@
             
             .card-img-container {
                 height: 200px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .product-detail {
+                margin: 20px auto;
+            }
+            
+            .product-info {
+                padding-left: 0;
+                margin-top: 2rem;
             }
         }
     </style>
@@ -420,10 +708,10 @@
         </div>
         
         <!-- Products Grid -->
-        <div class="row ">
+        <div class="row">
             <!-- Product 1 -->
             <div class="col-lg-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="1">
                     <div class="card-img-container">
                         <img src="images/frypan.webp" class="card-img-top" alt="Non-Stick Fry Pan">
                     </div>
@@ -431,14 +719,14 @@
                         <h5 class="card-title">Non-Stick Fry Pan</h5>
                         <p class="card-text">Premium non-stick frying pan with even heat distribution. Perfect for searing, sautéing, and frying with minimal oil.</p>
                         <div class="price">$24.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 2 -->
             <div class="col-lg-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="2">
                     <div class="card-img-container">
                         <img src="images/cabinets.0.jpg" class="card-img-top" alt="Kitchen Storage Cabinet">
                     </div>
@@ -446,14 +734,14 @@
                         <h5 class="card-title">Kitchen Storage Cabinet</h5>
                         <p class="card-text">Space-saving kitchen cabinet with multiple compartments. Keep your kitchen organized and clutter-free.</p>
                         <div class="price">$89.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 3 -->
             <div class="col-lg-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="3">
                     <div class="card-img-container">
                         <img src="images/grill pans.0.jpg" class="card-img-top" alt="Cast Iron Grill Pan">
                     </div>
@@ -461,14 +749,14 @@
                         <h5 class="card-title">Cast Iron Grill Pan</h5>
                         <p class="card-text">Professional-grade cast iron grill pan that creates perfect grill marks. Retains heat evenly for superior cooking.</p>
                         <div class="price">$34.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 4 -->
             <div class="col-lg-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="4">
                     <div class="card-img-container">
                         <img src="images/cutlery set.0.jpg" class="card-img-top" alt="Stainless Steel Cutlery Set">
                     </div>
@@ -476,14 +764,14 @@
                         <h5 class="card-title">Stainless Steel Cutlery Set</h5>
                         <p class="card-text">18/10 stainless steel cutlery set with ergonomic handles. Complete 16-piece set for everyday dining.</p>
                         <div class="price">$49.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 5 -->
             <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="5">
                     <div class="card-img-container">
                         <img src="images/plates stand.jpg" class="card-img-top" alt="Bamboo Plate Stand">
                     </div>
@@ -491,14 +779,14 @@
                         <h5 class="card-title">Bamboo Plate Stand</h5>
                         <p class="card-text">Eco-friendly bamboo plate stand with 5 tiers. Perfect for organizing plates and saving counter space.</p>
                         <div class="price">$19.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 6 -->
             <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="6">
                     <div class="card-img-container">
                         <img src="images/egg poachers.0.jpg" class="card-img-top" alt="Silicone Egg Poachers">
                     </div>
@@ -506,14 +794,14 @@
                         <h5 class="card-title">Silicone Egg Poachers</h5>
                         <p class="card-text">Set of 4 non-stick silicone egg poachers. Create perfectly shaped poached eggs every time with ease.</p>
                         <div class="price">$14.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 7 -->
             <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="7">
                     <div class="card-img-container">
                         <img src="images/steamers.webp" class="card-img-top" alt="Stainless Steel Steamers">
                     </div>
@@ -521,14 +809,14 @@
                         <h5 class="card-title">Stainless Steel Steamers</h5>
                         <p class="card-text">3-tier stainless steel steamer for healthy cooking. Stackable design allows multiple foods at once.</p>
                         <div class="price">$29.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 8 -->
             <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="8">
                     <div class="card-img-container">
                         <img src="images/flask.webp" class="card-img-top" alt="Stainless Steel Flask">
                     </div>
@@ -536,14 +824,14 @@
                         <h5 class="card-title">Stainless Steel Flask</h5>
                         <p class="card-text">Vacuum-insulated stainless steel flask. Keeps beverages hot or cold for hours. Leak-proof design.</p>
                         <div class="price">$22.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 9 -->
             <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="9">
                     <div class="card-img-container">
                         <img src="images/spice jars.0.jpg" class="card-img-top" alt="Glass Spice Jars Set">
                     </div>
@@ -551,14 +839,14 @@
                         <h5 class="card-title">Glass Spice Jars Set</h5>
                         <p class="card-text">Set of 12 glass spice jars with wooden lids. Magnetic labels included for easy organization.</p>
                         <div class="price">$34.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 10 -->
             <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="10">
                     <div class="card-img-container">
                         <img src="images/ice cream and corboc makers.webp" class="card-img-top" alt="Automatic Ice Cream Maker">
                     </div>
@@ -566,14 +854,14 @@
                         <h5 class="card-title">Automatic Ice Cream Maker</h5>
                         <p class="card-text">2-quart automatic ice cream maker. Create homemade ice cream, sorbet, and frozen yogurt in minutes.</p>
                         <div class="price">$79.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 11 -->
             <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="11">
                     <div class="card-img-container">
                         <img src="images/handis.0.jpg" class="card-img-top" alt="Traditional Cooking Handis">
                     </div>
@@ -581,14 +869,14 @@
                         <h5 class="card-title">Traditional Cooking Handis</h5>
                         <p class="card-text">Set of 3 traditional clay handis for authentic cooking. Enhances flavor and retains nutrients.</p>
                         <div class="price">$39.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
             
             <!-- Product 12 -->
             <div class="col-lg-3 mt-3 col-md-4 col-sm-6 fade-in">
-                <div class="card product-card">
+                <div class="card product-card" data-product-id="12">
                     <div class="card-img-container">
                         <img src="images/lunch box.webp" class="card-img-top" alt="Insulated Lunch Box">
                     </div>
@@ -596,15 +884,106 @@
                         <h5 class="card-title">Insulated Lunch Box</h5>
                         <p class="card-text">3-compartment insulated lunch box with containers. Keeps food fresh and at perfect temperature.</p>
                         <div class="price">$27.99</div>
-                        <a href="#" class="btn btn-primary">see details</a>
+                        <button class="btn btn-primary see-details-btn">See Details</button>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
     </div>
   </section>
+
+  <!-- Product Detail Modal -->
+  <div class="product-modal" id="productModal">
+    <div class="product-detail">
+      <div class="detail-header">
+        <button class="close-modal" id="closeModal">&times;</button>
+        <h1 id="modalProductTitle">Product Details</h1>
+        <p id="modalProductCategory">Category: Cookware</p>
+      </div>
+      <div class="detail-body">
+        <div class="row">
+          <!-- Left Side: Product Images -->
+          <div class="col-lg-6 mb-4">
+            <div class="product-image-gallery">
+              <div class="main-product-image">
+                <img id="modalProductImage" src="" alt="Product Image">
+              </div>
+              <div class="image-thumbnails" id="productThumbnails">
+                <!-- Thumbnails will be added by JavaScript -->
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right Side: Product Information -->
+          <div class="col-lg-6">
+            <div class="product-info">
+              <h2 id="modalProductName">Product Name</h2>
+              <div class="product-price" id="modalProductPrice">$0.00</div>
+              <div class="product-description" id="modalProductDescription">
+                Product description will appear here.
+              </div>
+              
+              <!-- Product Specifications -->
+              <div class="product-specs">
+                <h4 class="specs-title">Product Specifications</h4>
+                <table class="specs-table" id="modalProductSpecs">
+                  <!-- Specifications will be added by JavaScript -->
+                </table>
+              </div>
+              
+              <!-- Quantity Selector -->
+              <div class="quantity-selector">
+                <label class="me-3"><strong>Quantity:</strong></label>
+                <div class="quantity-btn" id="decreaseQty">-</div>
+                <input type="text" class="quantity-input" id="quantity" value="1" readonly>
+                <div class="quantity-btn" id="increaseQty">+</div>
+              </div>
+              
+              <!-- Action Buttons -->
+              <div class="action-buttons">
+                <button class="btn-add-cart" id="addToCart">
+                  <i class="bi bi-cart-plus me-2"></i>Add to Cart
+                </button>
+                <button class="btn-wishlist" id="addToWishlist">
+                  <i class="bi bi-heart me-2"></i>Wishlist
+                </button>
+              </div>
+              
+              <!-- Additional Info Tabs -->
+              <div class="product-tabs">
+                <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">Features</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" role="tab">Details</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab">Reviews</button>
+                  </li>
+                </ul>
+                <div class="tab-content" id="productTabContent">
+                  <div class="tab-pane fade show active" id="features" role="tabpanel">
+                    <ul class="feature-list" id="modalProductFeatures">
+                      <!-- Features will be added by JavaScript -->
+                    </ul>
+                  </div>
+                  <div class="tab-pane fade" id="details" role="tabpanel">
+                    <p id="modalProductDetails">Product details will appear here.</p>
+                  </div>
+                  <div class="tab-pane fade" id="reviews" role="tabpanel">
+                    <div id="modalProductReviews">
+                      <p>No reviews yet. Be the first to review this product!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Call to Action Section -->
   <section class="bg-warning py-5 text-center">
@@ -669,8 +1048,494 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   
-  <!-- Custom JavaScript for animations -->
+  <!-- Custom JavaScript -->
   <script>
+    // Product data with additional images and specifications
+    const products = {
+      1: {
+        name: "Non-Stick Fry Pan",
+        category: "Cookware",
+        price: "$24.99",
+        images: [
+          "images/frypan.webp",
+          "images/frypan-2.jpg",
+          "images/frypan-3.jpg"
+        ],
+        description: "Premium non-stick frying pan with even heat distribution. Perfect for searing, sautéing, and frying with minimal oil. Made with durable materials that ensure long-lasting performance.",
+        features: [
+          "Premium non-stick coating for easy food release",
+          "Even heat distribution for perfect cooking results",
+          "Durable construction for long-lasting use",
+          "Compatible with all cooktops including induction",
+          "Easy to clean and dishwasher safe",
+          "Ergonomic heat-resistant handle"
+        ],
+        specifications: {
+          "Material": "Aluminum with ceramic coating",
+          "Diameter": "10 inches",
+          "Handle": "Heat-resistant silicone",
+          "Compatibility": "All cooktops",
+          "Warranty": "2 years",
+          "Weight": "1.2 lbs"
+        },
+        details: "This premium non-stick fry pan features a ceramic coating that is free from PFOA, PFOS, lead, and cadmium. The aluminum core ensures even heat distribution for consistent cooking results. The ergonomic handle stays cool to the touch and provides a comfortable grip."
+      },
+      2: {
+        name: "Kitchen Storage Cabinet",
+        category: "Storage",
+        price: "$89.99",
+        images: [
+          "images/cabinets.0.jpg",
+          "images/cabinet-2.jpg",
+          "images/cabinet-3.jpg"
+        ],
+        description: "Space-saving kitchen cabinet with multiple compartments. Keep your kitchen organized and clutter-free with this stylish and functional storage solution.",
+        features: [
+          "Multiple compartments for organized storage",
+          "Durable construction with high-quality materials",
+          "Easy to assemble with included instructions",
+          "Sleek design that complements any kitchen",
+          "Adjustable shelves for customizable storage",
+          "Scratch-resistant surface"
+        ],
+        specifications: {
+          "Material": "Engineered wood with laminate finish",
+          "Dimensions": "24\" W x 12\" D x 60\" H",
+          "Shelves": "4 adjustable shelves",
+          "Weight Capacity": "50 lbs per shelf",
+          "Assembly": "Required (tools included)",
+          "Color": "Espresso Brown"
+        },
+        details: "This versatile kitchen storage cabinet offers ample space for all your kitchen essentials. The adjustable shelves allow you to customize the interior to fit items of various sizes. The scratch-resistant surface ensures your cabinet maintains its beautiful appearance for years to come."
+      },
+      3: {
+        name: "Cast Iron Grill Pan",
+        category: "Cookware",
+        price: "$34.99",
+        images: [
+          "images/grill pans.0.jpg",
+          "images/grill-pan-2.jpg",
+          "images/grill-pan-3.jpg"
+        ],
+        description: "Professional-grade cast iron grill pan that creates perfect grill marks. Retains heat evenly for superior cooking and adds authentic flavor to your dishes.",
+        features: [
+          "Creates perfect grill marks on food",
+          "Excellent heat retention for even cooking",
+          "Natural non-stick properties when seasoned",
+          "Durable cast iron construction",
+          "Works on all heat sources including induction",
+          "Adds authentic grilled flavor to dishes"
+        ],
+        specifications: {
+          "Material": "Cast Iron",
+          "Diameter": "12 inches",
+          "Handle": "Heat-resistant cast iron",
+          "Weight": "5.2 lbs",
+          "Compatibility": "All cooktops",
+          "Care": "Hand wash only"
+        },
+        details: "This cast iron grill pan is perfect for creating restaurant-quality grill marks on your favorite foods. The heavy-duty construction ensures even heat distribution and excellent heat retention. With proper seasoning, it develops a natural non-stick surface that improves with use."
+      },
+      4: {
+        name: "Stainless Steel Cutlery Set",
+        category: "Cutlery",
+        price: "$49.99",
+        images: [
+          "images/cutlery set.0.jpg",
+          "images/cutlery-2.jpg",
+          "images/cutlery-3.jpg"
+        ],
+        description: "18/10 stainless steel cutlery set with ergonomic handles. Complete 16-piece set for everyday dining that combines style with functionality.",
+        features: [
+          "18/10 stainless steel for superior durability",
+          "Ergonomic handles for comfortable grip",
+          "Complete 16-piece set for 4 place settings",
+          "Dishwasher safe for easy cleaning",
+          "Rust and corrosion resistant",
+          "Modern design that complements any table setting"
+        ],
+        specifications: {
+          "Material": "18/10 Stainless Steel",
+          "Pieces": "16 (4 place settings)",
+          "Finish": "Satin",
+          "Dishwasher Safe": "Yes",
+          "Warranty": "Lifetime",
+          "Weight": "3.5 lbs"
+        },
+        details: "This elegant cutlery set features 18/10 stainless steel construction, which means it contains 18% chromium and 10% nickel for superior corrosion resistance and durability. The ergonomic handles provide a comfortable grip, making every meal a pleasure."
+      },
+      5: {
+        name: "Bamboo Plate Stand",
+        category: "Storage",
+        price: "$19.99",
+        images: [
+          "images/plates stand.jpg",
+          "images/plate-stand-2.jpg",
+          "images/plate-stand-3.jpg"
+        ],
+        description: "Eco-friendly bamboo plate stand with 5 tiers. Perfect for organizing plates and saving counter space while adding a natural touch to your kitchen.",
+        features: [
+          "Eco-friendly bamboo construction",
+          "5-tier design for ample storage",
+          "Saves valuable counter space",
+          "Natural wood finish complements any decor",
+          "Sturdy and stable design",
+          "Easy to assemble and maintain"
+        ],
+        specifications: {
+          "Material": "Natural Bamboo",
+          "Tiers": "5",
+          "Capacity": "Up to 20 plates",
+          "Dimensions": "12\" W x 10\" D x 24\" H",
+          "Assembly": "Required (tools included)",
+          "Weight Capacity": "15 lbs"
+        },
+        details: "This bamboo plate stand is crafted from sustainable bamboo, making it an eco-friendly choice for your kitchen. The 5-tier design provides ample storage for your plates while taking up minimal counter space. The natural wood finish adds warmth to any kitchen decor."
+      },
+      6: {
+        name: "Silicone Egg Poachers",
+        category: "Cookware",
+        price: "$14.99",
+        images: [
+          "images/egg poachers.0.jpg",
+          "images/egg-poacher-2.jpg",
+          "images/egg-poacher-3.jpg"
+        ],
+        description: "Set of 4 non-stick silicone egg poachers. Create perfectly shaped poached eggs every time with ease, making breakfast preparation simple and mess-free.",
+        features: [
+          "Set of 4 poachers for multiple servings",
+          "Non-stick silicone for easy egg release",
+          "Heat resistant up to 450°F (230°C)",
+          "Dishwasher safe for easy cleaning",
+          "Flexible design for easy removal",
+          "Create perfectly shaped poached eggs"
+        ],
+        specifications: {
+          "Material": "Food-grade Silicone",
+          "Quantity": "4 poachers",
+          "Heat Resistance": "Up to 450°F (230°C)",
+          "Dishwasher Safe": "Yes",
+          "BPA Free": "Yes",
+          "Color": "Assorted colors"
+        },
+        details: "These silicone egg poachers make creating perfect poached eggs incredibly easy. The flexible design allows for easy removal of eggs without breaking the yolks. Made from food-grade silicone that is BPA-free and heat resistant, these poachers are both safe and durable."
+      },
+      7: {
+        name: "Stainless Steel Steamers",
+        category: "Cookware",
+        price: "$29.99",
+        images: [
+          "images/steamers.webp",
+          "images/steamer-2.jpg",
+          "images/steamer-3.jpg"
+        ],
+        description: "3-tier stainless steel steamer for healthy cooking. Stackable design allows multiple foods at once, preserving nutrients and flavor in your meals.",
+        features: [
+          "3-tier stackable design",
+          "Stainless steel construction for durability",
+          "Healthy cooking method preserves nutrients",
+          "Even steam distribution",
+          "Compact storage when not in use",
+          "Dishwasher safe for easy cleaning"
+        ],
+        specifications: {
+          "Material": "Stainless Steel",
+          "Tiers": "3 stackable tiers",
+          "Diameter": "10 inches",
+          "Capacity": "6 quarts total",
+          "Dishwasher Safe": "Yes",
+          "Weight": "2.8 lbs"
+        },
+        details: "This 3-tier stainless steel steamer allows you to cook multiple foods simultaneously while preserving their nutrients and natural flavors. The stackable design saves space in your kitchen when not in use. Made from high-quality stainless steel that is both durable and easy to clean."
+      },
+      8: {
+        name: "Stainless Steel Flask",
+        category: "Accessories",
+        price: "$22.99",
+        images: [
+          "images/flask.webp",
+          "images/flask-2.jpg",
+          "images/flask-3.jpg"
+        ],
+        description: "Vacuum-insulated stainless steel flask. Keeps beverages hot or cold for hours with leak-proof design, perfect for home or on-the-go use.",
+        features: [
+          "Vacuum insulation keeps temperature for hours",
+          "Leak-proof design for worry-free carrying",
+          "Stainless steel construction",
+          "Easy-to-clean wide mouth",
+          "Sweat-proof exterior",
+          "Lightweight and portable"
+        ],
+        specifications: {
+          "Material": "Stainless Steel",
+          "Capacity": "16 oz (500ml)",
+          "Insulation": "Double-wall vacuum",
+          "Heat Retention": "12 hours hot / 24 hours cold",
+          "Leak Proof": "Yes",
+          "Weight": "0.8 lbs"
+        },
+        details: "This vacuum-insulated flask keeps your beverages at the perfect temperature for hours. The double-wall construction prevents condensation, keeping the exterior sweat-free. The leak-proof design ensures you can carry it anywhere without worry."
+      },
+      9: {
+        name: "Glass Spice Jars Set",
+        category: "Storage",
+        price: "$34.99",
+        images: [
+          "images/spice jars.0.jpg",
+          "images/spice-jars-2.jpg",
+          "images/spice-jars-3.jpg"
+        ],
+        description: "Set of 12 glass spice jars with wooden lids. Magnetic labels included for easy organization, keeping your spices fresh and accessible.",
+        features: [
+          "Set of 12 glass jars with wooden lids",
+          "Magnetic labels for easy identification",
+          "Airtight seals to keep spices fresh",
+          "Clear glass for easy content visibility",
+          "Uniform size for organized storage",
+          "Easy to clean and refill"
+        ],
+        specifications: {
+          "Material": "Glass with wooden lids",
+          "Quantity": "12 jars",
+          "Capacity": "4 oz each",
+          "Labels": "Magnetic, chalkboard-style",
+          "Airtight": "Yes",
+          "Dimensions": "3.5\" H x 2.5\" diameter"
+        },
+        details: "This set of 12 glass spice jars helps you organize your spices in style. The airtight seals keep your spices fresh longer, while the clear glass allows you to see the contents at a glance. The included magnetic chalkboard labels make it easy to identify each spice."
+      },
+      10: {
+        name: "Automatic Ice Cream Maker",
+        category: "Appliances",
+        price: "$79.99",
+        images: [
+          "images/ice cream and corboc makers.webp",
+          "images/ice-cream-maker-2.jpg",
+          "images/ice-cream-maker-3.jpg"
+        ],
+        description: "2-quart automatic ice cream maker. Create homemade ice cream, sorbet, and frozen yogurt in minutes with this easy-to-use appliance.",
+        features: [
+          "2-quart capacity for family-sized batches",
+          "Automatic operation for easy use",
+          "Makes ice cream, sorbet, and frozen yogurt",
+          "Compact design for easy storage",
+          "Easy-to-clean components",
+          "No ice or salt required"
+        ],
+        specifications: {
+          "Capacity": "2 quarts",
+          "Power": "120V, 60Hz",
+          "Functions": "Ice cream, sorbet, frozen yogurt",
+          "Bowl Type": "Freezer bowl (pre-freeze required)",
+          "Weight": "8.5 lbs",
+          "Warranty": "1 year"
+        },
+        details: "Create delicious homemade frozen treats with this automatic ice cream maker. The 2-quart capacity is perfect for family-sized batches. Simply add your ingredients, turn it on, and enjoy fresh ice cream, sorbet, or frozen yogurt in about 30 minutes."
+      },
+      11: {
+        name: "Traditional Cooking Handis",
+        category: "Cookware",
+        price: "$39.99",
+        images: [
+          "images/handis.0.jpg",
+          "images/handi-2.jpg",
+          "images/handi-3.jpg"
+        ],
+        description: "Set of 3 traditional clay handis for authentic cooking. Enhances flavor and retains nutrients, bringing traditional cooking methods to your kitchen.",
+        features: [
+          "Set of 3 different sizes",
+          "Traditional clay construction",
+          "Enhances natural flavors of food",
+          "Retains nutrients during cooking",
+          "Even heat distribution",
+          "Adds authentic taste to dishes"
+        ],
+        specifications: {
+          "Material": "Natural Clay",
+          "Quantity": "3 handis (small, medium, large)",
+          "Capacity": "1L, 2L, 3L",
+          "Usage": "Stovetop and oven safe",
+          "Care": "Hand wash only",
+          "Origin": "Traditional craftsmanship"
+        },
+        details: "These traditional clay handis bring authentic cooking methods to your modern kitchen. The natural clay construction enhances the flavors of your dishes while retaining nutrients. Perfect for slow-cooked meals, curries, and traditional recipes."
+      },
+      12: {
+        name: "Insulated Lunch Box",
+        category: "Accessories",
+        price: "$27.99",
+        images: [
+          "images/lunch box.webp",
+          "images/lunch-box-2.jpg",
+          "images/lunch-box-3.jpg"
+        ],
+        description: "3-compartment insulated lunch box with containers. Keeps food fresh and at perfect temperature, making meal prep and transport convenient.",
+        features: [
+          "3-compartment design for varied meals",
+          "Insulated to maintain temperature",
+          "Leak-proof containers",
+          "Easy to clean materials",
+          "Compact and portable design",
+          "BPA-free food-safe materials"
+        ],
+        specifications: {
+          "Material": "Food-grade plastic and insulation",
+          "Compartments": "3 leak-proof containers",
+          "Capacity": "Total 1.8L",
+          "Insulation": "Double-wall",
+          "BPA Free": "Yes",
+          "Dishwasher Safe": "Top rack only"
+        },
+        details: "This insulated lunch box features 3 separate compartments to keep different foods separated and fresh. The leak-proof containers ensure no spills during transport, while the insulation keeps your food at the perfect temperature until you're ready to eat."
+      }
+    };
+
+    // DOM Elements
+    const productModal = document.getElementById('productModal');
+    const closeModal = document.getElementById('closeModal');
+    const seeDetailsButtons = document.querySelectorAll('.see-details-btn');
+    const modalProductTitle = document.getElementById('modalProductTitle');
+    const modalProductCategory = document.getElementById('modalProductCategory');
+    const modalProductImage = document.getElementById('modalProductImage');
+    const modalProductName = document.getElementById('modalProductName');
+    const modalProductPrice = document.getElementById('modalProductPrice');
+    const modalProductDescription = document.getElementById('modalProductDescription');
+    const modalProductFeatures = document.getElementById('modalProductFeatures');
+    const modalProductSpecs = document.getElementById('modalProductSpecs');
+    const modalProductDetails = document.getElementById('modalProductDetails');
+    const productThumbnails = document.getElementById('productThumbnails');
+    const decreaseQty = document.getElementById('decreaseQty');
+    const increaseQty = document.getElementById('increaseQty');
+    const quantityInput = document.getElementById('quantity');
+    const addToCart = document.getElementById('addToCart');
+    const addToWishlist = document.getElementById('addToWishlist');
+
+    // Open product detail modal when "See Details" button is clicked
+    seeDetailsButtons.forEach(button => {
+      button.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent card click event from firing
+        
+        const productCard = this.closest('.product-card');
+        const productId = productCard.getAttribute('data-product-id');
+        const product = products[productId];
+        
+        if (product) {
+          openProductModal(product);
+        }
+      });
+    });
+
+    // Also allow clicking on the entire card to open details
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const productId = this.getAttribute('data-product-id');
+        const product = products[productId];
+        
+        if (product) {
+          openProductModal(product);
+        }
+      });
+    });
+
+    // Function to open product modal
+    function openProductModal(product) {
+      // Update modal content
+      modalProductTitle.textContent = product.name;
+      modalProductCategory.textContent = `Category: ${product.category}`;
+      modalProductImage.src = product.images[0];
+      modalProductImage.alt = product.name;
+      modalProductName.textContent = product.name;
+      modalProductPrice.textContent = product.price;
+      modalProductDescription.textContent = product.description;
+      modalProductDetails.textContent = product.details;
+      
+      // Clear and add features
+      modalProductFeatures.innerHTML = '';
+      product.features.forEach(feature => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="bi bi-check-circle"></i> ${feature}`;
+        modalProductFeatures.appendChild(li);
+      });
+      
+      // Clear and add specifications
+      modalProductSpecs.innerHTML = '';
+      for (const [key, value] of Object.entries(product.specifications)) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="spec-name">${key}</td>
+          <td class="spec-value">${value}</td>
+        `;
+        modalProductSpecs.appendChild(tr);
+      }
+      
+      // Clear and add image thumbnails
+      productThumbnails.innerHTML = '';
+      product.images.forEach((image, index) => {
+        const thumbnail = document.createElement('div');
+        thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+        thumbnail.innerHTML = `<img src="${image}" alt="${product.name} ${index + 1}">`;
+        thumbnail.addEventListener('click', function() {
+          // Update main image
+          modalProductImage.src = image;
+          
+          // Update active thumbnail
+          document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.classList.remove('active');
+          });
+          this.classList.add('active');
+        });
+        productThumbnails.appendChild(thumbnail);
+      });
+      
+      // Show modal
+      productModal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal
+    closeModal.addEventListener('click', function() {
+      productModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target === productModal) {
+        productModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Quantity controls
+    decreaseQty.addEventListener('click', function() {
+      let currentQty = parseInt(quantityInput.value);
+      if (currentQty > 1) {
+        quantityInput.value = currentQty - 1;
+      }
+    });
+
+    increaseQty.addEventListener('click', function() {
+      let currentQty = parseInt(quantityInput.value);
+      quantityInput.value = currentQty + 1;
+    });
+
+    // Add to cart functionality
+    addToCart.addEventListener('click', function() {
+      const productName = modalProductName.textContent;
+      const quantity = parseInt(quantityInput.value);
+      
+      alert(`Added ${quantity} ${productName}(s) to your cart!`);
+      
+      // Reset quantity
+      quantityInput.value = 1;
+    });
+
+    // Add to wishlist functionality
+    addToWishlist.addEventListener('click', function() {
+      const productName = modalProductName.textContent;
+      alert(`Added ${productName} to your wishlist!`);
+    });
+
     // Fade-in animation on scroll
     document.addEventListener('DOMContentLoaded', function() {
         const fadeElements = document.querySelectorAll('.fade-in');
